@@ -58,7 +58,9 @@ export const Timeline = () => {
           return (
             <div key={index} className="relative flex items-center">
               {/* Timeline dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 z-10 w-8 h-8 bg-stellar rounded-full flex items-center justify-center animate-stellar-pulse">
+              <div className={`absolute z-10 w-8 h-8 bg-stellar rounded-full flex items-center justify-center animate-stellar-pulse ${
+                isLeft ? 'left-1/2 transform -translate-x-8' : 'left-1/2 transform translate-x-0'
+              }`}>
                 <div className="w-3 h-3 bg-stellar-glow rounded-full"></div>
               </div>
               
