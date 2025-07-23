@@ -48,33 +48,40 @@ const timelineData: TimelineItem[] = [
 
 export const Timeline = () => {
   return (
-    <div className="relative">
-      {/* Timeline line */}
-      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-stellar via-primary to-stellar/20"></div>
+    <div className="relative max-w-4xl mx-auto">
+      {/* Central timeline line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-stellar via-primary to-stellar/20 transform -translate-x-1/2"></div>
       
-      <div className="space-y-8">
-        {timelineData.map((item, index) => (
-          <div key={index} className="relative flex items-start space-x-6">
-            {/* Timeline dot */}
-            <div className="relative z-10 flex-shrink-0 w-8 h-8 bg-stellar rounded-full flex items-center justify-center animate-stellar-pulse">
-              <div className="w-3 h-3 bg-stellar-glow rounded-full"></div>
-            </div>
-            
-            {/* Content */}
-            <Card className="flex-1 p-6 bg-card/80 backdrop-blur-sm border-stellar/20 hover:border-stellar/40 transition-all duration-500 hover:shadow-[0_0_30px_hsl(var(--stellar)_/_0.2)]">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-stellar font-medium">{item.company}</p>
-                </div>
-                <span className="text-sm bg-stellar/20 text-stellar-glow px-3 py-1 rounded-full mt-2 md:mt-0 self-start">
-                  {item.year}
-                </span>
+      <div className="space-y-12">
+        {timelineData.map((item, index) => {
+          const isLeft = index % 2 === 0;
+          return (
+            <div key={index} className="relative flex items-center">
+              {/* Timeline dot */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 z-10 w-8 h-8 bg-stellar rounded-full flex items-center justify-center animate-stellar-pulse">
+                <div className="w-3 h-3 bg-stellar-glow rounded-full"></div>
               </div>
-              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-            </Card>
-          </div>
-        ))}
+              
+              {/* Content - alternating left and right */}
+              <div className={`w-5/12 ${isLeft ? 'pr-8 text-right' : 'ml-auto pl-8 text-left'}`}>
+                <Card className="p-6 bg-card/80 backdrop-blur-sm border-stellar/20 hover:border-stellar/40 transition-all duration-500 hover:shadow-[0_0_30px_hsl(var(--stellar)_/_0.2)]">
+                  <div className="mb-3">
+                    <div className={`${isLeft ? 'text-right' : 'text-left'}`}>
+                      <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
+                      <p className="text-stellar font-medium mb-2">{item.company}</p>
+                      <span className="inline-block text-sm bg-stellar/20 text-stellar-glow px-3 py-1 rounded-full">
+                        {item.year}
+                      </span>
+                    </div>
+                  </div>
+                  <p className={`text-muted-foreground leading-relaxed ${isLeft ? 'text-right' : 'text-left'}`}>
+                    {item.description}
+                  </p>
+                </Card>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

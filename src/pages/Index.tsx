@@ -96,9 +96,9 @@ const Index = () => {
                   <img 
                     src={chiefArchitect} 
                     alt="Chief Architect" 
-                    className="w-full max-w-sm mx-auto rounded-lg shadow-[0_0_30px_hsl(var(--stellar)_/_0.3)] hover:shadow-[0_0_50px_hsl(var(--stellar-glow)_/_0.4)] transition-all duration-500"
+                    className="w-full max-w-sm mx-auto rounded-full aspect-square object-cover shadow-[0_0_30px_hsl(var(--stellar)_/_0.3)] hover:shadow-[0_0_50px_hsl(var(--stellar-glow)_/_0.4)] transition-all duration-500"
                   />
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-stellar/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-stellar/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
               
