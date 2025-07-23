@@ -57,9 +57,14 @@ export const Timeline = () => {
           const isLeft = index % 2 === 0;
           return (
             <div key={index} className="relative flex items-center">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 z-10 w-8 h-8 bg-stellar rounded-full flex items-center justify-center animate-stellar-pulse">
-                <div className="w-3 h-3 bg-stellar-glow rounded-full"></div>
+              {/* Timeline dot with pointing line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 z-10 flex items-center">
+                {/* Pointing line */}
+                <div className={`w-12 h-0.5 bg-stellar ${isLeft ? 'order-2' : 'order-1'}`}></div>
+                {/* Dot */}
+                <div className={`w-8 h-8 bg-stellar rounded-full flex items-center justify-center animate-stellar-pulse ${isLeft ? 'order-1' : 'order-2'}`}>
+                  <div className="w-3 h-3 bg-stellar-glow rounded-full"></div>
+                </div>
               </div>
               
               {/* Content - alternating left and right */}
